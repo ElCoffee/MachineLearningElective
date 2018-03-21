@@ -16,11 +16,11 @@ for i = 1:1:100
     if algo == 'perceptron'
         perceptron = Perceptron(dimension, training_setX, training_setY);
         A = zeros(1, length(eval_setY));
-        for i = 1:length(eval_setY)
-            A(i) = perceptron.predict(eval_setX(i, :));
+        for j = 1:length(eval_setY)
+            A(j) = perceptron.predict(eval_setX(j, :));
         end
-        error_list(i) = isequal(A, eval_setY);
+        error_list(i) = sum(A' ~= eval_setY);
     end
-   
-avg_error = mean(error_list);
 end
+
+avg_error = mean(error_list)./(length(datasetY) - m);

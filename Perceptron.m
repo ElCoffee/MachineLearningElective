@@ -23,7 +23,7 @@ classdef Perceptron
         end
         
         function label = predict(obj, x)
-            label = obj.w*x';
+            label = sign(obj.w*x');
         end
         
         
