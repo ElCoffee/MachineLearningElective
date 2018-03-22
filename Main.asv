@@ -8,12 +8,13 @@ dataY = csvread('data_sets/data_set_1_Y.csv');
 % error rate as a function of m (parameter of the cross validation).
 
 algo = 'perceptron';
-error_values = []
-
-for m=1:100:1000
-    error_values = [error_values ; error_rate(m,dataX,dataY,aglo)]
-    
+n=10
+factor=100;
+error_values = zeros(1,n);
+for m=1:1:n
+    error_values(m) = error_rate(m*factor,dataX,dataY,algo);
+end
 figure(1)
-plot(1:100:1000,error_values)
+plot(100:100:1000,error_values)
 title('Average error rate as a function of m')
-
+legend('Average error rate')
