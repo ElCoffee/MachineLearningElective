@@ -23,12 +23,20 @@ for i = 1:1:100
     end
     if strcmp(algo, 'softsvm');
         softSVM = SoftSVM(dimension, training_setX, training_setY, args(1), args(2));
-        A = zeros(1, length(training_setY));
-        for j = 1:length(training_setY)
-            A(j) = softSVM.predict(training_setX(j, :));
+        A = zeros(1, length(eval_setY));
+        for j = 1:length(eval_setY)
+            A(j) = softSVM.predict(eval_setX(j, :));
         end
-        error_list(i) = sum(A' ~= training_setY);
+        error_list(i) = sum(A' ~= eval_setY);
     end
+%     if strcmp(algo, 'softSVMMATLAB');
+%         A = zeros(1, length(training_setY));
+%         SVMModel = fitcsvm(X,Y,'KernelFunction','rbf',...
+%     'Standardize',true,'ClassNames',{'negClass','posClass'});
+%         for j = 1:length(training_setY)
+%             A(j) = predict(SVMModel, training_setX(j));
+%             
+%     end
         
 end
 

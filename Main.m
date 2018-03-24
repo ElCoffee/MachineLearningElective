@@ -42,3 +42,22 @@ for i = 1:n
 end
 figure(2);
 semilogx(mu, error_values);
+
+%% DATASET 3 : Soft SVM with SGD and Kernels
+dataX = csvread('data_sets/data_set_3_X.csv');
+dataY = csvread('data_sets/data_set_3_Y.csv');
+%% Question 1
+
+algo = 'softsvm';
+m = 1e4;
+mu = 0;
+eta = 0.5;
+error_values = error_rate(m, dataX, dataY, algo, [mu eta])
+m = 500:500:4000;
+error_values = zeros(1,length(m));
+phiX = phi(dataX);
+for i = 1:length(m)
+    error_values(i) = error_rate(m(i), phiX, dataY, algo, [mu eta]);
+end
+figure(3);
+plot(m, error_values)
