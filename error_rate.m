@@ -29,14 +29,14 @@ for i = 1:1:100
         end
         error_list(i) = sum(A' ~= eval_setY);
     end
-%     if strcmp(algo, 'softSVMMATLAB');
-%         A = zeros(1, length(training_setY));
-%         SVMModel = fitcsvm(X,Y,'KernelFunction','rbf',...
-%     'Standardize',true,'ClassNames',{'negClass','posClass'});
-%         for j = 1:length(training_setY)
-%             A(j) = predict(SVMModel, training_setX(j));
-%             
-%     end
+    if strcmp(algo, 'softSVMMATLAB');
+        A = zeros(1, length(training_setY));
+        SVMModel = fitcsvm(X,Y,'KernelFunction','rbf',...
+    'Standardize',true,'ClassNames',{'negClass','posClass'});
+        for j = 1:length(training_setY)
+            A(j) = predict(SVMModel, training_setX(j));
+        end
+    end
         
 end
 
