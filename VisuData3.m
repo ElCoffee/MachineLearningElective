@@ -30,3 +30,10 @@ hold on;
 redX = dataX(redLabels, [2 3]);
 scatter(redX(:, 1), redX(:, 2), 1, 'r');
 title('Scatter plot of coordinates x2, x3 with blue color for positive label');
+
+figure;
+blueX = dataX(blueLabels, :);
+scatter3(blueX(:, 1), blueX(:, 2), blueX(:, 3), 1, 'b');
+hold on;
+redX = dataX(redLabels, :);
+scatter3(redX(:, 1), redX(:, 2), redX(:, 3), 1, 'r');
